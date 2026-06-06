@@ -3,144 +3,357 @@
     "id": 1,
     "name": "Bergström Sofa",
     "category": "Living Room",
-    "price": 12900,
-    "description": "A generous 3-seat sofa upholstered in durable linen fabric with solid oak legs. Removable cushion covers. Available in 6 colours: Natural, Slate, Sage, Blush, Charcoal, and Navy.",
-    "dimensions": "W 225 × D 90 × H 82 cm",
-    "materials": "Linen blend, solid oak",
     "image": "images/salong.jpg",
-    "new": true,
-    "available": true
+    "description": "A generous 3-seat sofa upholstered in durable linen fabric with solid oak legs. Removable cushion covers. Available in 6 colours: Natural, Slate, Sage, Blush, Charcoal, and Navy."
   },
   {
     "id": 2,
     "name": "Lunde Armchair",
     "category": "Living Room",
-    "price": 4200,
-    "description": "A compact accent chair with solid oak legs and high-density foam seat. Perfect for reading corners. Upholstered in bouclé fabric.",
-    "dimensions": "W 78 × D 82 × H 86 cm",
-    "materials": "Bouclé fabric, solid oak",
     "image": "images/stoler.jpg",
-    "new": false,
-    "available": true
+    "description": "A compact accent chair with solid oak legs and high-density foam seat. Perfect for reading corners. Upholstered in bouclé fabric."
   },
   {
     "id": 3,
     "name": "Haug Coffee Table",
     "category": "Living Room",
-    "price": 2800,
-    "description": "Solid walnut top on a powder-coated steel frame. A simple, sculptural piece that anchors any living room. Lower shelf for magazines and books.",
-    "dimensions": "W 110 × D 60 × H 40 cm",
-    "materials": "Solid walnut, powder-coated steel",
     "image": "images/Toppasveien-43-Prospekt-122.jpg",
-    "new": false,
-    "available": true
+    "description": "Solid walnut top on a powder-coated steel frame. A simple, sculptural piece that anchors any living room. Lower shelf for magazines and books."
   },
   {
     "id": 4,
     "name": "Eik Dining Table",
     "category": "Dining",
-    "price": 8500,
-    "description": "An extendable dining table in solid oak seating 6 to 10 people. The extension leaves store neatly underneath the top when not in use.",
-    "dimensions": "W 180–280 × D 90 × H 75 cm",
-    "materials": "Solid oak, oiled finish",
     "image": "images/Toppasveien-43-Prospekt-123.jpg",
-    "new": true,
-    "available": true
+    "description": "An extendable dining table in solid oak seating 6 to 10 people. The extension leaves store neatly underneath the top when not in use."
   },
   {
     "id": 5,
     "name": "Viken Dining Chair",
     "category": "Dining",
-    "price": 1490,
-    "description": "A stackable dining chair with a sculpted plywood back and upholstered seat pad. Sold individually. Pairs perfectly with the Eik Dining Table.",
-    "dimensions": "W 48 × D 52 × H 83 cm",
-    "materials": "Moulded plywood, fabric seat pad",
     "image": "images/Toppasveien-43-Prospekt-125.jpg",
-    "new": false,
-    "available": true
+    "description": "A stackable dining chair with a sculpted plywood back and upholstered seat pad. Sold individually. Pairs perfectly with the Eik Dining Table."
   },
   {
     "id": 6,
     "name": "Natt Bed Frame",
     "category": "Bedroom",
-    "price": 6200,
-    "description": "A king-size bed frame in black lacquered solid wood with a low-profile headboard and slat base included. Fits standard 180 × 200 cm mattress.",
-    "dimensions": "W 196 × D 210 × H 90 cm",
-    "materials": "Black lacquered oak, birch slats",
     "image": "images/hybel.jpg",
-    "new": false,
-    "available": true
+    "description": "A king-size bed frame in black lacquered solid wood with a low-profile headboard and slat base included. Fits standard 180 × 200 cm mattress."
   },
   {
     "id": 7,
     "name": "Dønna Dresser",
     "category": "Bedroom",
-    "price": 5100,
-    "description": "A 6-drawer dresser in white-oiled ash with soft-close drawer rails and solid brass handles. Ample storage with a clean, timeless silhouette.",
-    "dimensions": "W 100 × D 45 × H 120 cm",
-    "materials": "White-oiled ash, solid brass",
     "image": "images/skap_kontor.jpeg",
-    "new": true,
-    "available": true
+    "description": "A 6-drawer dresser in white-oiled ash with soft-close drawer rails and solid brass handles. Ample storage with a clean, timeless silhouette."
   },
   {
     "id": 8,
     "name": "Stille Bookshelf",
     "category": "Office",
-    "price": 3400,
-    "description": "A floor-to-ceiling shelf unit with adjustable shelf spacing. Wall-mounting hardware included. Available in natural oak or white lacquer finish.",
-    "dimensions": "W 80 × D 30 × H 200 cm",
-    "materials": "Oak veneer, steel hardware",
     "image": "images/hyller_kontor.jpeg",
-    "new": false,
-    "available": true
+    "description": "A floor-to-ceiling shelf unit with adjustable shelf spacing. Wall-mounting hardware included. Available in natural oak or white lacquer finish."
   },
   {
     "id": 9,
     "name": "Ro Lounge Chair",
     "category": "Living Room",
-    "price": 7800,
-    "description": "A fully upholstered lounge chair with a solid oak swivel base. Wide and deep seat for maximum comfort. Available in leather or fabric.",
-    "dimensions": "W 88 × D 96 × H 78 cm",
-    "materials": "Full-grain leather or fabric, solid oak",
     "image": "images/Toppasveien-43-Prospekt-126.jpg",
-    "new": false,
-    "available": true
+    "description": "A fully upholstered lounge chair with a solid oak swivel base. Wide and deep seat for maximum comfort. Available in leather or fabric."
   },
   {
     "id": 10,
     "name": "Fjord Side Table",
     "category": "Living Room",
-    "price": 1200,
-    "description": "A small round side table in solid marble top with a powder-coated steel leg. Lightweight and easy to move. Available in white and green marble.",
-    "dimensions": "Ø 35 × H 50 cm",
-    "materials": "Carrara marble, powder-coated steel",
     "image": "images/Toppasveien-43-Prospekt-127.jpg",
-    "new": true,
-    "available": true
+    "description": "A small round side table in solid marble top with a powder-coated steel leg. Lightweight and easy to move. Available in white and green marble."
   },
   {
     "id": 11,
     "name": "Kveld Floor Lamp",
     "category": "Lighting",
-    "price": 2100,
-    "description": "An arched floor lamp with a solid concrete base and linen drum shade. Creates warm, diffused ambient light. Includes a dimmer switch on the cord.",
-    "dimensions": "Base Ø 25 cm, H 175 cm, reach 60 cm",
-    "materials": "Concrete base, steel arm, linen shade",
     "image": "images/Toppasveien-43-Prospekt-129.jpg",
-    "new": false,
-    "available": true
+    "description": "An arched floor lamp with a solid concrete base and linen drum shade. Creates warm, diffused ambient light. Includes a dimmer switch on the cord."
   },
   {
     "id": 12,
     "name": "Tre Desk",
     "category": "Office",
-    "price": 4900,
-    "description": "A solid oak writing desk with a single drawer and cable management hole. Clean legs with a subtle taper. A refined workspace for focused work.",
-    "dimensions": "W 140 × D 65 × H 75 cm",
-    "materials": "Solid oak, oiled finish",
     "image": "images/skap_kontor2.jpeg",
-    "new": false,
-    "available": true
+    "description": "A solid oak writing desk with a single drawer and cable management hole. Clean legs with a subtle taper. A refined workspace for focused work."
+  },
+  {
+    "id": 13,
+    "name": "Nordic Entry Bench",
+    "category": "Hallway",
+    "image": "images/IMG_3152.jpeg",
+    "description": "A slim entry bench with hidden shoe storage and a softly upholstered seat, designed for compact Scandinavian homes."
+  },
+  {
+    "id": 14,
+    "name": "Fjell Coat Stand",
+    "category": "Hallway",
+    "image": "images/IMG_3153.jpeg",
+    "description": "Freestanding coat rack in oak and black steel with staggered hooks for jackets, hats, and bags."
+  },
+  {
+    "id": 15,
+    "name": "Moss Pouf",
+    "category": "Living Room",
+    "image": "images/IMG_3154.jpeg",
+    "description": "A round textured pouf that doubles as a footrest or extra seat, filled with resilient foam for everyday comfort."
+  },
+  {
+    "id": 16,
+    "name": "Varde Console",
+    "category": "Hallway",
+    "image": "images/IMG_3155.jpeg",
+    "description": "Minimal wall console with an oak top and matte steel frame, ideal for keys, mail, and small decor."
+  },
+  {
+    "id": 17,
+    "name": "Skog Wall Mirror",
+    "category": "Decor",
+    "image": "images/IMG_3157.jpeg",
+    "description": "Rounded-edge mirror with a slim ash frame that adds depth and light to narrow spaces."
+  },
+  {
+    "id": 18,
+    "name": "Lys Sideboard",
+    "category": "Dining",
+    "image": "images/IMG_3158.jpeg",
+    "description": "Low-profile sideboard with sliding doors and adjustable shelves, balancing storage and display."
+  },
+  {
+    "id": 19,
+    "name": "Klint TV Unit",
+    "category": "Living Room",
+    "image": "images/IMG_3159.jpeg",
+    "description": "Wide media unit with cable routing cutouts and ventilated compartments for streaming and audio gear."
+  },
+  {
+    "id": 20,
+    "name": "Havn Accent Table",
+    "category": "Living Room",
+    "image": "images/IMG_3160.jpeg",
+    "description": "Compact accent table in smoked oak veneer, made to sit beside sofas and lounge chairs."
+  },
+  {
+    "id": 21,
+    "name": "Lune Reading Lamp",
+    "category": "Lighting",
+    "image": "images/IMG_3161.jpeg",
+    "description": "Directional floor lamp with warm-white LED and dimmable control for calm evening reading."
+  },
+  {
+    "id": 22,
+    "name": "Eira Storage Ottoman",
+    "category": "Bedroom",
+    "image": "images/IMG_3162.jpeg",
+    "description": "Lift-top ottoman with lined internal storage for blankets, throws, and seasonal textiles."
+  },
+  {
+    "id": 23,
+    "name": "Rune Bedside Table",
+    "category": "Bedroom",
+    "image": "images/IMG_3163.jpeg",
+    "description": "Single-drawer bedside table in brushed oak with an open shelf for books and chargers."
+  },
+  {
+    "id": 24,
+    "name": "Svale Wardrobe",
+    "category": "Bedroom",
+    "image": "images/IMG_3164.jpeg",
+    "description": "Two-door wardrobe with hanging rail and upper shelf, finished in matte ivory lacquer."
+  },
+  {
+    "id": 25,
+    "name": "Granite Nesting Tables",
+    "category": "Living Room",
+    "image": "images/Toppasveien-43-Prospekt-130.jpg",
+    "description": "Set of two nesting side tables with stone-look tops and powder-coated bases."
+  },
+  {
+    "id": 26,
+    "name": "Arne Display Cabinet",
+    "category": "Dining",
+    "image": "images/Toppasveien-43-Prospekt-131.jpg",
+    "description": "Glass-front cabinet for tableware and books, with integrated warm LED shelf lighting."
+  },
+  {
+    "id": 27,
+    "name": "Bris Linen Curtains",
+    "category": "Textiles",
+    "image": "images/Toppasveien-43-Prospekt-133.jpg",
+    "description": "Light-filtering linen curtain set that softens daylight while preserving privacy."
+  },
+  {
+    "id": 28,
+    "name": "Tide Wool Rug",
+    "category": "Textiles",
+    "image": "images/Toppasveien-43-Prospekt-134.jpg",
+    "description": "Handwoven wool rug with a subtle geometric pattern and dense, durable pile."
+  },
+  {
+    "id": 29,
+    "name": "Aster Pendant",
+    "category": "Lighting",
+    "image": "images/Toppasveien-43-Prospekt-135.jpg",
+    "description": "Soft-glow pendant lamp in opal glass and brushed brass, ideal over dining tables."
+  },
+  {
+    "id": 30,
+    "name": "Holt Outdoor Set",
+    "category": "Outdoor",
+    "image": "images/Toppasveien-43-Prospekt-140.jpg",
+    "description": "Weather-resistant lounge set with modular seating and quick-dry cushions."
+  },
+  {
+    "id": 31,
+    "name": "Vik Balcony Chair",
+    "category": "Outdoor",
+    "image": "images/Toppasveien-43-Prospekt-142.jpg",
+    "description": "Foldable powder-coated chair designed for balconies and compact terraces."
+  },
+  {
+    "id": 32,
+    "name": "Sjø Planter Box",
+    "category": "Outdoor",
+    "image": "images/Toppasveien-43-Prospekt-143.jpg",
+    "description": "Raised planter in thermally treated pine with drainage channels for herbs and flowers."
+  },
+  {
+    "id": 33,
+    "name": "Drift Garden Lantern",
+    "category": "Outdoor",
+    "image": "images/Toppasveien-43-Prospekt-144.jpg",
+    "description": "Battery-powered lantern with frosted diffuser for warm ambient terrace lighting."
+  },
+  {
+    "id": 34,
+    "name": "Polar Chest Freezer",
+    "category": "Kitchen",
+    "image": "images/fryser.jpeg",
+    "description": "Spacious energy-efficient freezer with removable baskets and fast-freeze mode."
+  },
+  {
+    "id": 35,
+    "name": "Garage Work Cabinet",
+    "category": "Storage",
+    "image": "images/garasje.jpg",
+    "description": "Heavy-duty garage cabinet with lockable doors and reinforced interior shelves."
+  },
+  {
+    "id": 36,
+    "name": "Loft Insulation Pack",
+    "category": "Building",
+    "image": "images/glava_loft.jpeg",
+    "description": "High-performance insulation kit for attic upgrades, reducing heat loss and drafts."
+  },
+  {
+    "id": 37,
+    "name": "Garden Tool Rack",
+    "category": "Outdoor",
+    "image": "images/hageutstyr.jpeg",
+    "description": "Wall-mounted tool organizer for rakes, shovels, and long-handled garden gear."
+  },
+  {
+    "id": 38,
+    "name": "Slate Patio Tiles",
+    "category": "Outdoor",
+    "image": "images/heller.jpeg",
+    "description": "Durable exterior paving tiles with textured anti-slip finish for paths and patios."
+  },
+  {
+    "id": 39,
+    "name": "Utility Shelf Unit",
+    "category": "Storage",
+    "image": "images/hyller_bod.jpeg",
+    "description": "Freestanding storage shelves for utility rooms and sheds with high load capacity."
+  },
+  {
+    "id": 40,
+    "name": "Modular Shed Shelving",
+    "category": "Storage",
+    "image": "images/hyller_bod2.jpeg",
+    "description": "Adjustable modular shelving system for organizing tools, paint, and seasonal items."
+  },
+  {
+    "id": 41,
+    "name": "Summit Fridge",
+    "category": "Kitchen",
+    "image": "images/kjoleskap_oppe.jpeg",
+    "description": "Tall refrigerator with adjustable door bins, humidity drawer, and low-noise compressor."
+  },
+  {
+    "id": 42,
+    "name": "Nord Chef Range",
+    "category": "Kitchen",
+    "image": "images/komfyr_oppe.jpeg",
+    "description": "Freestanding cooker with convection oven and responsive ceramic cooktop."
+  },
+  {
+    "id": 43,
+    "name": "Reinforced Leca Blocks",
+    "category": "Building",
+    "image": "images/leca_garasje.jpeg",
+    "description": "Lightweight structural blocks suitable for garage and utility wall construction."
+  },
+  {
+    "id": 44,
+    "name": "QuietFlow Dishwasher",
+    "category": "Kitchen",
+    "image": "images/oppvask_oppe.jpeg",
+    "description": "Built-in dishwasher with eco cycle, flexible racks, and extra-quiet nighttime mode."
+  },
+  {
+    "id": 45,
+    "name": "Loft Timber Bundle",
+    "category": "Building",
+    "image": "images/planker_loft.jpeg",
+    "description": "Planed timber pack for attic framing, shelving, and small renovation projects."
+  },
+  {
+    "id": 46,
+    "name": "VentFlex Ducting",
+    "category": "Building",
+    "image": "images/ror_loft2.jpeg",
+    "description": "Flexible loft ducting system for ventilation routing in tight ceiling spaces."
+  },
+  {
+    "id": 47,
+    "name": "CopperLine Pipe Set",
+    "category": "Building",
+    "image": "images/rør_loft.jpeg",
+    "description": "Pre-cut utility pipe set for loft plumbing upgrades and service rerouting."
+  },
+  {
+    "id": 48,
+    "name": "Utility Wash Basin",
+    "category": "Laundry",
+    "image": "images/vask.jpeg",
+    "description": "Deep utility basin with splash guard and sturdy stand for laundry or workshop use."
+  },
+  {
+    "id": 49,
+    "name": "Classic Roof Tile",
+    "category": "Roofing",
+    "image": "images/takstein.jpeg",
+    "description": "Traditional roof tile with weather-resistant coating and interlocking profile."
+  },
+  {
+    "id": 50,
+    "name": "Arctic Roof Tile",
+    "category": "Roofing",
+    "image": "images/takstein2.jpeg",
+    "description": "Low-absorption roof tile designed for freeze-thaw durability in Nordic climates."
+  },
+  {
+    "id": 51,
+    "name": "Mixed Masonry Pack",
+    "category": "Building",
+    "image": "images/takstein_murstein.jpeg",
+    "description": "Combined roof tile and masonry sample pack for coordinated exterior renovation planning."
   }
 ]
