@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Møbler — Furniture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sand:    #F5F0E8;
+      --cream:   #FDFBF7;
+      --stone:   #E8E2D6;
+      --bark:    #8C7B6B;
+      --timber:  #3D2B1F;
+      --ink:     #1A1410;
+      --leaf:    #4A5E3A;
+      --accent:  #C4956A;
+      --white:   #FFFFFF;
+      --gap:     clamp(1rem, 3vw, 2rem);
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--cream);
+      border-bottom: 1px solid var(--stone);
+      padding: 0 var(--gap);
+    }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .logo span { color: var(--accent); }
+
+    .search-wrap {
+      flex: 1;
+      max-width: 380px;
+      position: relative;
+    }
+
+    .search-wrap svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--bark);
+      pointer-events: none;
+    }
+
+    #search {
+      width: 100%;
+      padding: 9px 12px 9px 36px;
+      background: var(--sand);
+      border: 1px solid transparent;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    #search::placeholder { color: var(--bark); }
+    #search:focus { border-color: var(--accent); }
+
+    .item-count {
+      font-size: 0.8125rem;
+      color: var(--bark);
+      flex-shrink: 0;
+    }
+
+    /* ── LAYOUT ── */
+    .page {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem var(--gap) 4rem;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+    }
+
+    .sidebar h2 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--bark);
+      margin-bottom: 0.75rem;
+    }
+
+    .filter-list {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .filter-list li {
+      margin-bottom: 2px;
+    }
+
+    .filter-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 7px 10px;
+      background: transparent;
+      border: none;
+      border-radius: 5px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: var(--bark);
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .filter-btn:hover { background: var(--sand); color: var(--ink); }
+    .filter-btn.active { background: var(--sand); color: var(--ink); font-weight: 500; }
+    .filter-btn .count { font-size: 0.75rem; color: var(--bark); }
+    .filter-btn.active .count { color: var(--accent); }
+
+    .sort-label {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--bark);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    #sort {
+      width: 100%;
+      padding: 8px 10px;
+      background: var(--sand);
+      border: 1px solid transparent;
+      border-radius: 5px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      color: var(--ink);
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    #sort:focus { border-color: var(--accent); }
+
+    /* ── GRID ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--stone);
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: fadeUp 0.35s ease both;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(61, 43, 31, 0.10);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: var(--sand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-img .placeholder {
+      font-size: 3.5rem;
+      opacity: 0.5;
+      user-select: none;
+    }
+
+    .badge-new {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--leaf);
+      color: #D4E6C3;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 3px;
+    }
+
+    .card-body { padding: 14px 16px 16px; }
+
+    .card-category {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bark);
+      margin-bottom: 4px;
+    }
+
+    .card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+
+    .card-price {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--timber);
+    }
+
+    /* ── EMPTY STATE ── */
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--bark);
+    }
+
+    .empty p:first-child {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+
+    /* ── MODAL ── */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 20, 16, 0.55);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal {
+      background: var(--cream);
+      border-radius: 10px;
+      width: 100%;
+      max-width: 720px;
+      max-height: 88vh;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      transform: translateY(16px);
+      transition: transform 0.25s;
+    }
+
+    .modal-backdrop.open .modal { transform: translateY(0); }
+
+    .modal-img {
+      aspect-ratio: 1;
+      background: var(--sand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px 0 0 10px;
+      overflow: hidden;
+    }
+
+    .modal-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-img .placeholder { font-size: 6rem; opacity: 0.4; }
+
+    .modal-body {
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .modal-category {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--bark);
+    }
+
+    .modal-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    .modal-price {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--timber);
+    }
+
+    .modal-desc {
+      font-size: 0.9rem;
+      color: var(--bark);
+      line-height: 1.7;
+    }
+
+    .modal-meta {
+      font-size: 0.8125rem;
+      color: var(--bark);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--stone);
+    }
+
+    .modal-meta span strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
+      padding-top: 1rem;
+    }
+
+    .btn-primary {
+      flex: 1;
+      padding: 11px;
+      background: var(--timber);
+      color: var(--cream);
+      border: none;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--ink); }
+
+    .btn-close {
+      padding: 11px 14px;
+      background: transparent;
+      color: var(--bark);
+      border: 1px solid var(--stone);
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .btn-close:hover { background: var(--sand); color: var(--ink); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .page {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+      }
+
+      .sidebar h2 { display: none; }
+      .filter-list { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0; }
+      .filter-list li { margin: 0; }
+      .filter-btn { padding: 5px 12px; border: 1px solid var(--stone); }
+      .filter-btn.active { border-color: var(--accent); }
+
+      .sort-wrap { margin-left: auto; }
+
+      .modal { grid-template-columns: 1fr; }
+      .modal-img { border-radius: 10px 10px 0 0; aspect-ratio: 16/9; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <a href="#" class="logo">Møbler<span>.</span></a>
+      <div class="search-wrap">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="search" placeholder="Search furniture…" aria-label="Search furniture" />
+      </div>
+      <span class="item-count" id="count" aria-live="polite"></span>
+    </div>
+  </header>
+
+  <div class="page">
+    <aside class="sidebar" aria-label="Filters">
+      <h2>Category</h2>
+      <ul class="filter-list" id="filter-list" role="list"></ul>
+      <div class="sort-wrap">
+        <label class="sort-label" for="sort">Sort by</label>
+        <select id="sort" aria-label="Sort items">
+          <option value="default">Featured</option>
+          <option value="price-asc">Price: low to high</option>
+          <option value="price-desc">Price: high to low</option>
+          <option value="name-asc">Name: A–Z</option>
+        </select>
+      </div>
+    </aside>
+
+    <main>
+      <div class="grid" id="grid" role="list" aria-label="Furniture items"></div>
+    </main>
+  </div>
+
+  <!-- Detail modal -->
+  <div class="modal-backdrop" id="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-name">
+    <div class="modal" id="modal">
+      <div class="modal-img" id="modal-img"></div>
+      <div class="modal-body">
+        <div class="modal-category" id="modal-category"></div>
+        <h2 class="modal-name" id="modal-name"></h2>
+        <div class="modal-price" id="modal-price"></div>
+        <p class="modal-desc" id="modal-desc"></p>
+        <div class="modal-meta" id="modal-meta"></div>
+        <div class="modal-actions">
+          <button class="btn-primary" id="btn-enquire">Enquire about this item</button>
+          <button class="btn-close" id="btn-close" aria-label="Close">✕</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ─────────────────────────────────────────
+    // EMOJI PLACEHOLDERS (used when no image)
+    // ─────────────────────────────────────────
+    const EMOJI = {
+      'Living Room': '🛋️',
+      'Dining':      '🍽️',
+      'Bedroom':     '🛏️',
+      'Office':      '📚',
+      'Lighting':    '💡',
+    };
+
+    // ─────────────────────────────────────────
+    // STATE
+    // ─────────────────────────────────────────
+    let allItems = [];
+    let activeCategory = 'All';
+    let searchQuery = '';
+    let sortOrder = 'default';
+
+    // ─────────────────────────────────────────
+    // LOAD DATA
+    // ─────────────────────────────────────────
+    fetch('data.json')
+      .then(r => r.json())
+      .then(data => {
+        allItems = data;
+        buildFilters();
+        render();
+      })
+      .catch(() => {
+        document.getElementById('grid').innerHTML =
+          '<p class="empty" style="padding:2rem;color:var(--bark)">Could not load furniture data. Make sure data.json is in the same folder.</p>';
+      });
+
+    // ─────────────────────────────────────────
+    // BUILD CATEGORY FILTERS
+    // ─────────────────────────────────────────
+    function buildFilters() {
+      const cats = ['All', ...new Set(allItems.map(i => i.category))];
+      const list = document.getElementById('filter-list');
+      list.innerHTML = cats.map(cat => {
+        const count = cat === 'All' ? allItems.length : allItems.filter(i => i.category === cat).length;
+        return `<li><button class="filter-btn${cat === 'All' ? ' active' : ''}"
+          data-cat="${cat}" aria-pressed="${cat === 'All'}">
+          ${cat} <span class="count">${count}</span>
+        </button></li>`;
+      }).join('');
+
+      list.addEventListener('click', e => {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+        list.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+        activeCategory = btn.dataset.cat;
+        render();
+      });
+    }
+
+    // ─────────────────────────────────────────
+    // FILTER + SORT
+    // ─────────────────────────────────────────
+    function getFiltered() {
+      let items = allItems.filter(item => {
+        const matchCat  = activeCategory === 'All' || item.category === activeCategory;
+        const q = searchQuery.toLowerCase();
+        const matchSearch = !q || item.name.toLowerCase().includes(q) || item.category.toLowerCase().includes(q) || item.description.toLowerCase().includes(q);
+        return matchCat && matchSearch;
+      });
+
+      if (sortOrder === 'price-asc')  items = items.sort((a, b) => a.price - b.price);
+      if (sortOrder === 'price-desc') items = items.sort((a, b) => b.price - a.price);
+      if (sortOrder === 'name-asc')   items = items.sort((a, b) => a.name.localeCompare(b.name));
+
+      return items;
+    }
+
+    // ─────────────────────────────────────────
+    // RENDER GRID
+    // ─────────────────────────────────────────
+    function render() {
+      const items = getFiltered();
+      const grid  = document.getElementById('grid');
+      const count = document.getElementById('count');
+
+      count.textContent = `${items.length} item${items.length !== 1 ? 's' : ''}`;
+
+      if (items.length === 0) {
+        grid.innerHTML = `<div class="empty"><p>No furniture found</p><p>Try adjusting your search or filters.</p></div>`;
+        return;
+      }
+
+      grid.innerHTML = items.map((item, i) => {
+        const emoji = EMOJI[item.category] || '🪑';
+        const imgEl = item.image
+          ? `<img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.parentElement.innerHTML='<span class=\\'placeholder\\'>${emoji}</span>'">`
+          : `<span class="placeholder">${emoji}</span>`;
+
+        return `
+          <article class="card" role="listitem" tabindex="0"
+            style="animation-delay:${i * 40}ms"
+            data-id="${item.id}"
+            aria-label="${item.name}, kr ${item.price.toLocaleString('nb-NO')}">
+            <div class="card-img">
+              ${imgEl}
+              ${item.new ? '<span class="badge-new">New</span>' : ''}
+            </div>
+            <div class="card-body">
+              <div class="card-category">${item.category}</div>
+              <h3 class="card-name">${item.name}</h3>
+              <div class="card-price">kr ${item.price.toLocaleString('nb-NO')}</div>
+            </div>
+          </article>`;
+      }).join('');
+
+      // Open modal on click or Enter key
+      grid.querySelectorAll('.card').forEach(card => {
+        const open = () => openModal(parseInt(card.dataset.id));
+        card.addEventListener('click', open);
+        card.addEventListener('keydown', e => { if (e.key === 'Enter') open(); });
+      });
+    }
+
+    // ─────────────────────────────────────────
+    // MODAL
+    // ─────────────────────────────────────────
+    function openModal(id) {
+      const item = allItems.find(i => i.id === id);
+      if (!item) return;
+
+      const emoji = EMOJI[item.category] || '🪑';
+      const imgHtml = item.image
+        ? `<img src="${item.image}" alt="${item.name}" onerror="this.parentElement.innerHTML='<span class=\\'placeholder\\'>${emoji}</span>'">`
+        : `<span class="placeholder">${emoji}</span>`;
+
+      document.getElementById('modal-img').innerHTML = imgHtml;
+      document.getElementById('modal-category').textContent = item.category;
+      document.getElementById('modal-name').textContent = item.name;
+      document.getElementById('modal-price').textContent = `kr ${item.price.toLocaleString('nb-NO')}`;
+      document.getElementById('modal-desc').textContent = item.description;
+      document.getElementById('modal-meta').innerHTML = `
+        <span><strong>Dimensions</strong> — ${item.dimensions}</span>
+        <span><strong>Materials</strong> — ${item.materials}</span>
+      `;
+
+      document.getElementById('btn-enquire').onclick = () => {
+        // ── CUSTOMISE: link to a contact form, email, or WhatsApp ──
+        const subject = encodeURIComponent(`Enquiry: ${item.name}`);
+        const body    = encodeURIComponent(`Hi,\n\nI am interested in the ${item.name} (kr ${item.price.toLocaleString('nb-NO')}).\n\nPlease get in touch with more details.\n\nThanks`);
+        window.location.href = `mailto:your@email.com?subject=${subject}&body=${body}`;
+      };
+
+      const backdrop = document.getElementById('modal-backdrop');
+      backdrop.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('btn-close').focus();
+    }
+
+    function closeModal() {
+      document.getElementById('modal-backdrop').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('btn-close').addEventListener('click', closeModal);
+    document.getElementById('modal-backdrop').addEventListener('click', e => {
+      if (e.target === e.currentTarget) closeModal();
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // ─────────────────────────────────────────
+    // SEARCH + SORT EVENTS
+    // ─────────────────────────────────────────
+    document.getElementById('search').addEventListener('input', e => {
+      searchQuery = e.target.value;
+      render();
+    });
+
+    document.getElementById('sort').addEventListener('change', e => {
+      sortOrder = e.target.value;
+      render();
+    });
+  </script>
+</body>
+</html>
