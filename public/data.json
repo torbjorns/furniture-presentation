@@ -7,7 +7,7 @@
     "description": "A generous 3-seat sofa upholstered in durable linen fabric with solid oak legs. Removable cushion covers. Available in 6 colours: Natural, Slate, Sage, Blush, Charcoal, and Navy.",
     "dimensions": "W 225 × D 90 × H 82 cm",
     "materials": "Linen blend, solid oak",
-    "image": "images/sofa.jpg",
+    "image": "images/salong.jpg",
     "new": true,
     "available": true
   },
@@ -19,7 +19,7 @@
     "description": "A compact accent chair with solid oak legs and high-density foam seat. Perfect for reading corners. Upholstered in bouclé fabric.",
     "dimensions": "W 78 × D 82 × H 86 cm",
     "materials": "Bouclé fabric, solid oak",
-    "image": "images/armchair.jpg",
+    "image": "images/stoler.jpg",
     "new": false,
     "available": true
   },
@@ -31,7 +31,7 @@
     "description": "Solid walnut top on a powder-coated steel frame. A simple, sculptural piece that anchors any living room. Lower shelf for magazines and books.",
     "dimensions": "W 110 × D 60 × H 40 cm",
     "materials": "Solid walnut, powder-coated steel",
-    "image": "images/coffee-table.jpg",
+    "image": "images/Toppasveien-43-Prospekt-122.jpg",
     "new": false,
     "available": true
   },
@@ -43,7 +43,7 @@
     "description": "An extendable dining table in solid oak seating 6 to 10 people. The extension leaves store neatly underneath the top when not in use.",
     "dimensions": "W 180–280 × D 90 × H 75 cm",
     "materials": "Solid oak, oiled finish",
-    "image": "images/dining-table.jpg",
+    "image": "images/Toppasveien-43-Prospekt-123.jpg",
     "new": true,
     "available": true
   },
@@ -55,7 +55,7 @@
     "description": "A stackable dining chair with a sculpted plywood back and upholstered seat pad. Sold individually. Pairs perfectly with the Eik Dining Table.",
     "dimensions": "W 48 × D 52 × H 83 cm",
     "materials": "Moulded plywood, fabric seat pad",
-    "image": "images/dining-chair.jpg",
+    "image": "images/Toppasveien-43-Prospekt-125.jpg",
     "new": false,
     "available": true
   },
@@ -67,7 +67,7 @@
     "description": "A king-size bed frame in black lacquered solid wood with a low-profile headboard and slat base included. Fits standard 180 × 200 cm mattress.",
     "dimensions": "W 196 × D 210 × H 90 cm",
     "materials": "Black lacquered oak, birch slats",
-    "image": "images/bed.jpg",
+    "image": "images/hybel.jpg",
     "new": false,
     "available": true
   },
@@ -79,7 +79,7 @@
     "description": "A 6-drawer dresser in white-oiled ash with soft-close drawer rails and solid brass handles. Ample storage with a clean, timeless silhouette.",
     "dimensions": "W 100 × D 45 × H 120 cm",
     "materials": "White-oiled ash, solid brass",
-    "image": "images/dresser.jpg",
+    "image": "images/skap_kontor.jpeg",
     "new": true,
     "available": true
   },
@@ -91,7 +91,7 @@
     "description": "A floor-to-ceiling shelf unit with adjustable shelf spacing. Wall-mounting hardware included. Available in natural oak or white lacquer finish.",
     "dimensions": "W 80 × D 30 × H 200 cm",
     "materials": "Oak veneer, steel hardware",
-    "image": "images/bookshelf.jpg",
+    "image": "images/hyller_kontor.jpeg",
     "new": false,
     "available": true
   },
@@ -103,7 +103,7 @@
     "description": "A fully upholstered lounge chair with a solid oak swivel base. Wide and deep seat for maximum comfort. Available in leather or fabric.",
     "dimensions": "W 88 × D 96 × H 78 cm",
     "materials": "Full-grain leather or fabric, solid oak",
-    "image": "images/lounge-chair.jpg",
+    "image": "images/Toppasveien-43-Prospekt-126.jpg",
     "new": false,
     "available": true
   },
@@ -115,7 +115,7 @@
     "description": "A small round side table in solid marble top with a powder-coated steel leg. Lightweight and easy to move. Available in white and green marble.",
     "dimensions": "Ø 35 × H 50 cm",
     "materials": "Carrara marble, powder-coated steel",
-    "image": "images/side-table.jpg",
+    "image": "images/Toppasveien-43-Prospekt-127.jpg",
     "new": true,
     "available": true
   },
@@ -127,7 +127,7 @@
     "description": "An arched floor lamp with a solid concrete base and linen drum shade. Creates warm, diffused ambient light. Includes a dimmer switch on the cord.",
     "dimensions": "Base Ø 25 cm, H 175 cm, reach 60 cm",
     "materials": "Concrete base, steel arm, linen shade",
-    "image": "images/floor-lamp.jpg",
+    "image": "images/Toppasveien-43-Prospekt-129.jpg",
     "new": false,
     "available": true
   },
@@ -139,7 +139,7 @@
     "description": "A solid oak writing desk with a single drawer and cable management hole. Clean legs with a subtle taper. A refined workspace for focused work.",
     "dimensions": "W 140 × D 65 × H 75 cm",
     "materials": "Solid oak, oiled finish",
-    "image": "images/desk.jpg",
+    "image": "images/skap_kontor2.jpeg",
     "new": false,
     "available": true
   }
