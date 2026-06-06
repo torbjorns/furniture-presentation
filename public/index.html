@@ -239,20 +239,6 @@
       user-select: none;
     }
 
-    .badge-new {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: var(--leaf);
-      color: #D4E6C3;
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 3px 8px;
-      border-radius: 3px;
-    }
-
     .card-body { padding: 14px 16px 16px; }
 
     .card-category {
@@ -271,12 +257,6 @@
       color: var(--ink);
       line-height: 1.3;
       margin-bottom: 10px;
-    }
-
-    .card-price {
-      font-size: 0.9375rem;
-      font-weight: 500;
-      color: var(--timber);
     }
 
     /* ── EMPTY STATE ── */
@@ -371,31 +351,10 @@
       color: var(--ink);
     }
 
-    .modal-price {
-      font-size: 1.3rem;
-      font-weight: 500;
-      color: var(--timber);
-    }
-
     .modal-desc {
       font-size: 0.9rem;
       color: var(--bark);
       line-height: 1.7;
-    }
-
-    .modal-meta {
-      font-size: 0.8125rem;
-      color: var(--bark);
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      padding-top: 0.5rem;
-      border-top: 1px solid var(--stone);
-    }
-
-    .modal-meta span strong {
-      color: var(--ink);
-      font-weight: 500;
     }
 
     .modal-actions {
@@ -483,9 +442,8 @@
         <label class="sort-label" for="sort">Sort by</label>
         <select id="sort" aria-label="Sort items">
           <option value="default">Featured</option>
-          <option value="price-asc">Price: low to high</option>
-          <option value="price-desc">Price: high to low</option>
           <option value="name-asc">Name: A–Z</option>
+          <option value="category-asc">Category: A–Z</option>
         </select>
       </div>
     </aside>
@@ -502,9 +460,7 @@
       <div class="modal-body">
         <div class="modal-category" id="modal-category"></div>
         <h2 class="modal-name" id="modal-name"></h2>
-        <div class="modal-price" id="modal-price"></div>
         <p class="modal-desc" id="modal-desc"></p>
-        <div class="modal-meta" id="modal-meta"></div>
         <div class="modal-actions">
           <button class="btn-primary" id="btn-enquire">Enquire about this item</button>
           <button class="btn-close" id="btn-close" aria-label="Close">✕</button>
@@ -587,9 +543,11 @@
         return matchCat && matchSearch;
       });
 
-      if (sortOrder === 'price-asc')  items = items.sort((a, b) => a.price - b.price);
-      if (sortOrder === 'price-desc') items = items.sort((a, b) => b.price - a.price);
       if (sortOrder === 'name-asc')   items = items.sort((a, b) => a.name.localeCompare(b.name));
+      if (sortOrder === 'category-asc') items = items.sort((a, b) => {
+        const byCategory = a.category.localeCompare(b.category);
+        return byCategory !== 0 ? byCategory : a.name.localeCompare(b.name);
+      });
 
       return items;
     }
@@ -619,15 +577,13 @@
           <article class="card" role="listitem" tabindex="0"
             style="animation-delay:${i * 40}ms"
             data-id="${item.id}"
-            aria-label="${item.name}, kr ${item.price.toLocaleString('nb-NO')}">
+            aria-label="${item.name}, ${item.category}">
             <div class="card-img">
               ${imgEl}
-              ${item.new ? '<span class="badge-new">New</span>' : ''}
             </div>
             <div class="card-body">
               <div class="card-category">${item.category}</div>
               <h3 class="card-name">${item.name}</h3>
-              <div class="card-price">kr ${item.price.toLocaleString('nb-NO')}</div>
             </div>
           </article>`;
       }).join('');
@@ -655,17 +611,12 @@
       document.getElementById('modal-img').innerHTML = imgHtml;
       document.getElementById('modal-category').textContent = item.category;
       document.getElementById('modal-name').textContent = item.name;
-      document.getElementById('modal-price').textContent = `kr ${item.price.toLocaleString('nb-NO')}`;
       document.getElementById('modal-desc').textContent = item.description;
-      document.getElementById('modal-meta').innerHTML = `
-        <span><strong>Dimensions</strong> — ${item.dimensions}</span>
-        <span><strong>Materials</strong> — ${item.materials}</span>
-      `;
 
       document.getElementById('btn-enquire').onclick = () => {
         // ── CUSTOMISE: link to a contact form, email, or WhatsApp ──
         const subject = encodeURIComponent(`Enquiry: ${item.name}`);
-        const body    = encodeURIComponent(`Hi,\n\nI am interested in the ${item.name} (kr ${item.price.toLocaleString('nb-NO')}).\n\nPlease get in touch with more details.\n\nThanks`);
+        const body    = encodeURIComponent(`Hi,\n\nI am interested in the ${item.name}.\n\nPlease get in touch with more details.\n\nThanks`);
         window.location.href = `mailto:your@email.com?subject=${subject}&body=${body}`;
       };
 
