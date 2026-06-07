@@ -2,40 +2,40 @@
   {
     "id": 1,
     "name": "Salong",
-    "category": "Møbler",
-    "description": "A generous 3-seat sofa upholstered in durable linen fabric with solid oak legs. Removable cushion covers. Available in 6 colours: Natural, Slate, Sage, Blush, Charcoal, and Navy.",
+    "category": "M\u00f8bler",
+    "description": "",
     "images": [
-      "images/Salong.jpg",
-      "images/Salong2.jpg",
-      "images/Salong3.jpg"
+      "images/salong.jpg",
+      "images/salong2.jpg",
+      "images/salong3.jpg"
     ]
   },
   {
     "id": 2,
     "name": "Lenestoler og lite bord",
-    "category": "Møbler",
-    "description": "A compact accent chair with solid oak legs and high-density foam seat. Perfect for reading corners. Upholstered in bouclé fabric.",
+    "category": "M\u00f8bler",
+    "description": "",
     "images": [
-      "images/Lenestoler på stua.jpg"
+      "images/lenestoler.jpg"
     ]
   },
   {
     "id": 3,
-    "name": "Spisestue. bord og åtte stoler",
-    "category": "Møbler",
-    "description": "To stoler til står i garasjen.",
+    "name": "Spisestue. bord og \u00e5tte stoler",
+    "category": "M\u00f8bler",
+    "description": "To stoler til st\u00e5r i garasjen.",
     "images": [
-      "images/Toppasveien-43-Prospekt-122.jpg",
-      "images/Spisestue.jpg",
-      "images/Spisestue2.jpg",
-      "images/IMG_3161.jpeg"
+      "images/toppasveien-43-prospekt-122.jpg",
+      "images/spisestue.jpg",
+      "images/spisestue2.jpg",
+      "images/img_3161.jpeg"
     ]
   },
   {
     "id": 7,
     "name": "Garderobeskap med innmat",
-    "category": "Møbler",
-    "description": "Brukt til lagring på kontoret.",
+    "category": "M\u00f8bler",
+    "description": "Brukt til lagring p\u00e5 kontoret.",
     "images": [
       "images/skap_kontor.jpeg",
       "images/skap_kontor2.jpeg"
@@ -44,21 +44,21 @@
   {
     "id": 8,
     "name": "Sjalusiskap og veggmonterte hyller",
-    "category": "Møbler",
+    "category": "M\u00f8bler",
     "description": "A floor-to-ceiling shelf unit with adjustable shelf spacing. Wall-mounting hardware included. Available in natural oak or white lacquer finish.",
     "images": [
       "images/hyller_kontor.jpeg",
-      "images/Sjalusiskap.jpg"
+      "images/sjalusiskap.jpg"
     ]
   },
   {
     "id": 9,
     "name": "Solid skrivebord og enkel stol",
-    "category": "Møbler",
+    "category": "M\u00f8bler",
     "description": "",
     "images": [
-      "images/Skrivebord.jpg",
-      "images/Skrivebord2.jpg"
+      "images/skrivebord.jpg",
+      "images/skrivebord2.jpg"
     ]
   },
   {
@@ -67,27 +67,27 @@
     "category": "Materialer",
     "description": "Brukt til gulv i garasje.",
     "images": [
-      "images/IMG_3152.jpeg",
-      "images/IMG_3153.jpeg"
+      "images/img_3152.jpeg",
+      "images/img_3153.jpeg"
     ]
   },
   {
     "id": 15,
-    "name": "Stålskap i garasjen",
+    "name": "St\u00e5lskap i garasjen",
     "category": "Lagring",
     "description": "Brukt til lagring i garasje. Inneholder rester av maling som nettopp er brukt.",
     "images": [
-      "images/IMG_3155.jpeg",
-      "images/IMG_3154.jpeg"
+      "images/img_3155.jpeg",
+      "images/img_3154.jpeg"
     ]
   },
   {
     "id": 17,
-    "name": "Stålpult med treplate",
+    "name": "St\u00e5lpult med treplate",
     "category": "Lagring",
-    "description": "Brukt som arbeidsbord i garasje. Solid stålramme med treplate.",
+    "description": "Brukt som arbeidsbord i garasje. Solid st\u00e5lramme med treplate.",
     "images": [
-      "images/IMG_3157.jpeg"
+      "images/img_3157.jpeg"
     ]
   },
   {
@@ -96,8 +96,8 @@
     "category": "Materialer",
     "description": "Brukt til gulv i garasje.",
     "images": [
-      "images/IMG_3158.jpeg",
-      "images/IMG_3159.jpeg"
+      "images/img_3158.jpeg",
+      "images/img_3159.jpeg"
     ]
   },
   {
@@ -106,41 +106,41 @@
     "category": "Lagring",
     "description": "Brukt til lagring i boden.",
     "images": [
-      "images/IMG_3160.jpeg"
+      "images/img_3160.jpeg"
     ]
   },
   {
     "id": 25,
     "name": "Frokostbord med to stoler",
-    "category": "Møbler",
+    "category": "M\u00f8bler",
     "description": "",
     "images": [
-      "images/Frokostbord.jpg"
+      "images/frokostbord.jpg"
     ]
   },
   {
     "id": 26,
-    "name": "BBB-reol med hjørne",
-    "category": "Møbler",
+    "name": "BBB-reol med hj\u00f8rne",
+    "category": "M\u00f8bler",
     "description": "",
     "images": [
-      "images/BBB-reol.jpg"
+      "images/bbb-reol.jpg"
     ]
   },
   {
     "id": 27,
-    "name": "Enkel furuseng på soverom nede",
-    "category": "Møbler",
-    "description": "I tillegg et lite båltt nattbord, en blå lenestol og en blå kommode.",
+    "name": "Enkel furuseng p\u00e5 soverom nede",
+    "category": "M\u00f8bler",
+    "description": "I tillegg et lite b\u00e5ltt nattbord, en bl\u00e5 lenestol og en bl\u00e5 kommode.",
     "images": [
-      "images/blåsov.jpg"
+      "images/blaasov.jpg"
     ]
   },
   {
     "id": 28,
-    "name": "Enkel furuseng på soverom nede",
-    "category": "Møbler",
-    "description": "I tillegg et lite nattbord i samme stil, og et litt større.",
+    "name": "Enkel furuseng p\u00e5 soverom nede",
+    "category": "M\u00f8bler",
+    "description": "I tillegg et lite nattbord i samme stil, og et litt st\u00f8rre.",
     "images": [
       "images/gulsov.jpg"
     ]
@@ -148,39 +148,39 @@
   {
     "id": 30,
     "name": "Furu dobbeltseng",
-    "category": "Møbler",
+    "category": "M\u00f8bler",
     "description": "",
     "images": [
-      "images/Toppasveien-43-Prospekt-140.jpg",
-      "images/Toppasveien-43-Prospekt-142.jpg"
+      "images/toppasveien-43-prospekt-140.jpg",
+      "images/toppasveien-43-prospekt-142.jpg"
     ]
   },
   {
     "id": 31,
     "name": "Furukommode i gangen nede",
-    "category": "Møbler",
+    "category": "M\u00f8bler",
     "description": "",
     "images": [
-      "images/Furukommode.jpg"
+      "images/furukommode.jpg"
     ]
   },
   {
     "id": 32,
     "name": "Furukommode i stua",
-    "category": "Møbler",
+    "category": "M\u00f8bler",
     "description": "",
     "images": [
-      "images/Furukommode2.jpg",
-      "images/Kommode.jpg"
+      "images/furukommode2.jpg",
+      "images/kommode.jpg"
     ]
   },
   {
     "id": 33,
-    "name": "Smal seng på gjesterommet",
-    "category": "Møbler",
+    "name": "Smal seng p\u00e5 gjesterommet",
+    "category": "M\u00f8bler",
     "description": "",
     "images": [
-      "images/Gjesteseng.jpg"
+      "images/gjesteseng.jpg"
     ]
   },
   {
@@ -194,7 +194,7 @@
   },
   {
     "id": 36,
-    "name": "Isolasjon på loftet",
+    "name": "Isolasjon p\u00e5 loftet",
     "category": "Materialer",
     "description": "Planlagt isolasjon for loftet.",
     "images": [
@@ -221,18 +221,18 @@
   },
   {
     "id": 40,
-    "name": "Stålhyller i boden",
+    "name": "St\u00e5lhyller i boden",
     "category": "Lagring",
     "description": "",
     "images": [
-      "images/Toppasveien-43-Prospekt-135.jpg",
+      "images/toppasveien-43-prospekt-135.jpg",
       "images/hyller_bod2.jpeg",
       "images/hyller_bod.jpeg"
     ]
   },
   {
     "id": 41,
-    "name": "Kjøleskap på kjøkkenet oppe.",
+    "name": "Kj\u00f8leskap p\u00e5 kj\u00f8kkenet oppe.",
     "category": "Hvitevarer",
     "description": "",
     "images": [
@@ -241,7 +241,7 @@
   },
   {
     "id": 42,
-    "name": "Komfyr på kjøkkenet oppe.",
+    "name": "Komfyr p\u00e5 kj\u00f8kkenet oppe.",
     "category": "Hvitevarer",
     "description": "Med ettermontert komfyrvakt.",
     "images": [
@@ -252,14 +252,14 @@
     "id": 43,
     "name": "Leca-blokker",
     "category": "Materialer",
-    "description": "Brukt til gulv i garasje, for smøregrav.",
+    "description": "Brukt til gulv i garasje, for sm\u00f8regrav.",
     "images": [
       "images/leca_garasje.jpeg"
     ]
   },
   {
     "id": 44,
-    "name": "Oppvaskmaskin på kjøkkenet oppe.",
+    "name": "Oppvaskmaskin p\u00e5 kj\u00f8kkenet oppe.",
     "category": "Hvitevarer",
     "description": "",
     "images": [
@@ -270,24 +270,24 @@
     "id": 45,
     "name": "Planker for loftet.",
     "category": "Materialer",
-    "description": "For å legge gulv på loftet der dette ikke finnes.",
+    "description": "For \u00e5 legge gulv p\u00e5 loftet der dette ikke finnes.",
     "images": [
       "images/planker_loft.jpeg"
     ]
   },
   {
     "id": 46,
-    "name": "Rør for ventilasjon på loftet",
+    "name": "R\u00f8r for ventilasjon p\u00e5 loftet",
     "category": "Materialer",
-    "description": "Fleksible rør for ventilasjon på loftet.",
+    "description": "Fleksible r\u00f8r for ventilasjon p\u00e5 loftet.",
     "images": [
       "images/ror_loft2.jpeg",
-      "images/rør_loft.jpeg"
+      "images/ror_loft.jpeg"
     ]
   },
   {
     "id": 48,
-    "name": "Vaskemaskin og tørketrommel på vaskerommet nede",
+    "name": "Vaskemaskin og t\u00f8rketrommel p\u00e5 vaskerommet nede",
     "category": "Hvitevarer",
     "description": "",
     "images": [
@@ -298,7 +298,7 @@
     "id": 49,
     "name": "Takstein, murstein og fliser",
     "category": "Materialer",
-    "description": "Slikt som er brukt på taket og på muren rundt huset.",
+    "description": "Slikt som er brukt p\u00e5 taket og p\u00e5 muren rundt huset.",
     "images": [
       "images/takstein2.jpeg",
       "images/takstein.jpeg",
