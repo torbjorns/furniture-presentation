@@ -208,6 +208,24 @@ header {
   line-height: 1.5;
 }
 
+.sync-status {
+  margin-top: 0.55rem;
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.sync-status.ok {
+  color: #2f6d3b;
+}
+
+.sync-status.warn {
+  color: #946200;
+}
+
+.sync-status.error {
+  color: #a23333;
+}
+
 .card {
   background: var(--white);
   border: 1px solid var(--stone);
