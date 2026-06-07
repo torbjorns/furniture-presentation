@@ -1,0 +1,9 @@
+# Supabase credentials — keep off GitHub
+public/config.js
+
+# Firebase
+.firebase/
+firebase-debug.log
+
+# macOS
+.DS_Store
