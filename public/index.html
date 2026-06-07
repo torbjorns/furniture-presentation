@@ -385,7 +385,7 @@
                 <button type="button" class="decision-btn ${selection.decision === 'remove' ? 'active' : ''}" data-id="${item.id}" data-decision="remove" aria-pressed="${selection.decision === 'remove'}">Fjern</button>
               </div>
               <label class="comment-label" for="comment-${item.id}">Kommentar fra kjøper</label>
-              <textarea class="comment-input" id="comment-${item.id}" data-id="${item.id}" rows="3" maxlength="400" placeholder="Valgfri kommentar, f.eks. tilstand, ønsket fjerningsdato eller spørsmål"></textarea>
+              <textarea class="comment-input" id="comment-${item.id}" data-id="${item.id}" rows="3" maxlength="400" placeholder="Valgfri kommentar, f.eks. spørsmål, eller om kun noe skal beholdes/fjernes"></textarea>
             </div>
           </article>`;
       }).join('');
