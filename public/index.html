@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>House Contents Handover</title>
+  <title>Overlevering av innbo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -13,35 +13,35 @@
 
   <header>
     <div class="header-inner">
-      <a href="#" class="logo">Handover<span>.</span></a>
+      <a href="#" class="logo">Overlevering<span>.</span></a>
       <div class="search-wrap">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="search" id="search" placeholder="Search items…" aria-label="Search items" />
+        <input type="search" id="search" placeholder="Søk i innbo…" aria-label="Søk i innbo" />
       </div>
       <span class="item-count" id="count" aria-live="polite"></span>
     </div>
   </header>
 
   <div class="page">
-    <aside class="sidebar" aria-label="Filters">
-      <h2>Category</h2>
+    <aside class="sidebar" aria-label="Filtre">
+      <h2>Kategori</h2>
       <ul class="filter-list" id="filter-list" role="list"></ul>
       <div class="sort-wrap">
-        <label class="sort-label" for="sort">Order</label>
-        <select id="sort" aria-label="Sort items">
-          <option value="default">Featured</option>
-          <option value="name-asc">Name: A–Z</option>
-          <option value="category-asc">Category: A–Z</option>
+        <label class="sort-label" for="sort">Sortering</label>
+        <select id="sort" aria-label="Sorter elementer">
+          <option value="default">Anbefalt</option>
+          <option value="name-asc">Navn: A–Å</option>
+          <option value="category-asc">Kategori: A–Å</option>
         </select>
       </div>
     </aside>
 
     <main>
-      <section class="intro" aria-label="How to use this page">
-        <h1 class="intro-title">House Contents Decision List</h1>
-        <p class="intro-text">For each item, choose <strong>Leave</strong> or <strong>Remove</strong> and optionally add a comment. Your selections are saved automatically in this browser.</p>
+      <section class="intro" aria-label="Slik bruker du siden">
+        <h1 class="intro-title">Valgliste for innbo</h1>
+        <p class="intro-text">For hvert element velger du <strong>Behold</strong> eller <strong>Fjern</strong>, og kan legge inn en kommentar. Valgene lagres automatisk i denne nettleseren.</p>
       </section>
-      <div class="grid" id="grid" role="list" aria-label="House items"></div>
+      <div class="grid" id="grid" role="list" aria-label="Innboelementer"></div>
     </main>
   </div>
 
@@ -57,11 +57,32 @@
       'Lighting':    '💡',
     };
 
+    const CATEGORY_LABELS = {
+      'Living Room': 'Stue',
+      'Dining': 'Spisestue',
+      'Bedroom': 'Soverom',
+      'Office': 'Kontor',
+      'Lighting': 'Belysning',
+      'Hallway': 'Gang',
+      'Decor': 'Dekor',
+      'Textiles': 'Tekstiler',
+      'Outdoor': 'Ute',
+      'Kitchen': 'Kjøkken',
+      'Storage': 'Oppbevaring',
+      'Building': 'Bygg',
+      'Laundry': 'Vaskerom',
+      'Roofing': 'Tak'
+    };
+
+    function displayCategory(category) {
+      return CATEGORY_LABELS[category] || category;
+    }
+
     // ─────────────────────────────────────────
     // STATE
     // ─────────────────────────────────────────
     let allItems = [];
-    let activeCategory = 'All';
+    let activeCategory = 'Alle';
     let searchQuery = '';
     let sortOrder = 'default';
     const STORAGE_KEY = 'house-item-decisions-v1';
@@ -144,20 +165,21 @@
       })
       .catch(() => {
         document.getElementById('grid').innerHTML =
-          '<p class="error-message">Could not load furniture data. Make sure data.json is in the same folder.</p>';
+          '<p class="error-message">Kunne ikke laste inn data. Kontroller at data.json ligger i samme mappe.</p>';
       });
 
     // ─────────────────────────────────────────
     // BUILD CATEGORY FILTERS
     // ─────────────────────────────────────────
     function buildFilters() {
-      const cats = ['All', ...new Set(allItems.map(i => i.category))];
+      const cats = ['Alle', ...new Set(allItems.map(i => i.category))];
       const list = document.getElementById('filter-list');
       list.innerHTML = cats.map(cat => {
-        const count = cat === 'All' ? allItems.length : allItems.filter(i => i.category === cat).length;
-        return `<li><button class="filter-btn${cat === 'All' ? ' active' : ''}"
-          data-cat="${cat}" aria-pressed="${cat === 'All'}">
-          ${cat} <span class="count">${count}</span>
+        const count = cat === 'Alle' ? allItems.length : allItems.filter(i => i.category === cat).length;
+        const label = cat === 'Alle' ? cat : displayCategory(cat);
+        return `<li><button class="filter-btn${cat === 'Alle' ? ' active' : ''}"
+          data-cat="${cat}" aria-pressed="${cat === 'Alle'}">
+          ${label} <span class="count">${count}</span>
         </button></li>`;
       }).join('');
 
@@ -180,7 +202,7 @@
     // ─────────────────────────────────────────
     function getFiltered() {
       let items = allItems.filter(item => {
-        const matchCat  = activeCategory === 'All' || item.category === activeCategory;
+        const matchCat  = activeCategory === 'Alle' || item.category === activeCategory;
         const q = searchQuery.toLowerCase();
         const matchSearch = !q || item.name.toLowerCase().includes(q) || item.category.toLowerCase().includes(q) || item.description.toLowerCase().includes(q);
         return matchCat && matchSearch;
@@ -204,10 +226,10 @@
       const count = document.getElementById('count');
 
       const total = allItems.length;
-      count.textContent = `Showing ${items.length} of ${total}`;
+      count.textContent = `Viser ${items.length} av ${total}`;
 
       if (items.length === 0) {
-        grid.innerHTML = `<div class="empty"><p>No furniture found</p><p>Try adjusting your search or filters.</p></div>`;
+        grid.innerHTML = `<div class="empty"><p>Ingen elementer funnet</p><p>Prøv å justere søk eller filtre.</p></div>`;
         return;
       }
 
@@ -221,20 +243,20 @@
         return `
           <article class="card" role="listitem"
             data-id="${item.id}"
-            aria-label="${item.name}, ${item.category}">
+            aria-label="${item.name}, ${displayCategory(item.category)}">
             <div class="card-img">
               ${imgEl}
             </div>
             <div class="card-body">
-              <div class="card-category">${item.category}</div>
+              <div class="card-category">${displayCategory(item.category)}</div>
               <h3 class="card-name">${item.name}</h3>
               <p class="card-desc">${item.description}</p>
-              <div class="decision-group" data-id="${item.id}" role="group" aria-label="Choose leave or remove for ${item.name}">
-                <button type="button" class="decision-btn ${selection.decision === 'leave' ? 'active' : ''}" data-id="${item.id}" data-decision="leave" aria-pressed="${selection.decision === 'leave'}">Leave</button>
-                <button type="button" class="decision-btn ${selection.decision === 'remove' ? 'active' : ''}" data-id="${item.id}" data-decision="remove" aria-pressed="${selection.decision === 'remove'}">Remove</button>
+              <div class="decision-group" data-id="${item.id}" role="group" aria-label="Velg behold eller fjern for ${item.name}">
+                <button type="button" class="decision-btn ${selection.decision === 'leave' ? 'active' : ''}" data-id="${item.id}" data-decision="leave" aria-pressed="${selection.decision === 'leave'}">Behold</button>
+                <button type="button" class="decision-btn ${selection.decision === 'remove' ? 'active' : ''}" data-id="${item.id}" data-decision="remove" aria-pressed="${selection.decision === 'remove'}">Fjern</button>
               </div>
-              <label class="comment-label" for="comment-${item.id}">Buyer comment</label>
-              <textarea class="comment-input" id="comment-${item.id}" data-id="${item.id}" rows="3" maxlength="400" placeholder="Optional note, e.g. condition, preferred removal date, or question"></textarea>
+              <label class="comment-label" for="comment-${item.id}">Kommentar fra kjøper</label>
+              <textarea class="comment-input" id="comment-${item.id}" data-id="${item.id}" rows="3" maxlength="400" placeholder="Valgfri kommentar, f.eks. tilstand, ønsket fjerningsdato eller spørsmål"></textarea>
             </div>
           </article>`;
       }).join('');
