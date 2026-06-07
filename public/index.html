@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Møbler — Furniture</title>
+  <title>House Contents Handover</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -13,10 +13,10 @@
 
   <header>
     <div class="header-inner">
-      <a href="#" class="logo">Møbler<span>.</span></a>
+      <a href="#" class="logo">Handover<span>.</span></a>
       <div class="search-wrap">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="search" id="search" placeholder="Search furniture…" aria-label="Search furniture" />
+        <input type="search" id="search" placeholder="Search items…" aria-label="Search items" />
       </div>
       <span class="item-count" id="count" aria-live="polite"></span>
     </div>
@@ -27,7 +27,7 @@
       <h2>Category</h2>
       <ul class="filter-list" id="filter-list" role="list"></ul>
       <div class="sort-wrap">
-        <label class="sort-label" for="sort">Sort by</label>
+        <label class="sort-label" for="sort">Order</label>
         <select id="sort" aria-label="Sort items">
           <option value="default">Featured</option>
           <option value="name-asc">Name: A–Z</option>
@@ -37,24 +37,12 @@
     </aside>
 
     <main>
-      <div class="grid" id="grid" role="list" aria-label="Furniture items"></div>
+      <section class="intro" aria-label="How to use this page">
+        <h1 class="intro-title">House Contents Decision List</h1>
+        <p class="intro-text">For each item, choose <strong>Leave</strong> or <strong>Remove</strong> and optionally add a comment. Your selections are saved automatically in this browser.</p>
+      </section>
+      <div class="grid" id="grid" role="list" aria-label="House items"></div>
     </main>
-  </div>
-
-  <!-- Detail modal -->
-  <div class="modal-backdrop" id="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-name">
-    <div class="modal" id="modal">
-      <div class="modal-img" id="modal-img"></div>
-      <div class="modal-body">
-        <div class="modal-category" id="modal-category"></div>
-        <h2 class="modal-name" id="modal-name"></h2>
-        <p class="modal-desc" id="modal-desc"></p>
-        <div class="modal-actions">
-          <button class="btn-primary" id="btn-enquire">Enquire about this item</button>
-          <button class="btn-close" id="btn-close" aria-label="Close">✕</button>
-        </div>
-      </div>
-    </div>
   </div>
 
   <script>
@@ -76,6 +64,71 @@
     let activeCategory = 'All';
     let searchQuery = '';
     let sortOrder = 'default';
+    const STORAGE_KEY = 'house-item-decisions-v1';
+    let itemSelections = {};
+
+    function defaultSelection() {
+      return {
+        decision: 'leave',
+        buyerComment: ''
+      };
+    }
+
+    function loadSelections() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return {};
+        const parsed = JSON.parse(raw);
+        return parsed && typeof parsed === 'object' ? parsed : {};
+      } catch {
+        return {};
+      }
+    }
+
+    function saveSelections() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(itemSelections));
+    }
+
+    function ensureSelectionsForItems(items) {
+      let changed = false;
+
+      for (const item of items) {
+        const key = String(item.id);
+        const existing = itemSelections[key];
+
+        if (!existing || typeof existing !== 'object') {
+          itemSelections[key] = defaultSelection();
+          changed = true;
+          continue;
+        }
+
+        if (existing.decision !== 'leave' && existing.decision !== 'remove') {
+          existing.decision = 'leave';
+          changed = true;
+        }
+
+        if (typeof existing.buyerComment !== 'string') {
+          existing.buyerComment = '';
+          changed = true;
+        }
+      }
+
+      if (changed) saveSelections();
+    }
+
+    function setDecision(itemId, decision) {
+      const key = String(itemId);
+      if (!itemSelections[key]) itemSelections[key] = defaultSelection();
+      itemSelections[key].decision = decision;
+      saveSelections();
+    }
+
+    function setBuyerComment(itemId, comment) {
+      const key = String(itemId);
+      if (!itemSelections[key]) itemSelections[key] = defaultSelection();
+      itemSelections[key].buyerComment = comment;
+      saveSelections();
+    }
 
     // ─────────────────────────────────────────
     // LOAD DATA
@@ -84,6 +137,8 @@
       .then(r => r.json())
       .then(data => {
         allItems = data;
+        itemSelections = loadSelections();
+        ensureSelectionsForItems(allItems);
         buildFilters();
         render();
       })
@@ -148,7 +203,8 @@
       const grid  = document.getElementById('grid');
       const count = document.getElementById('count');
 
-      count.textContent = `${items.length} item${items.length !== 1 ? 's' : ''}`;
+      const total = allItems.length;
+      count.textContent = `Showing ${items.length} of ${total}`;
 
       if (items.length === 0) {
         grid.innerHTML = `<div class="empty"><p>No furniture found</p><p>Try adjusting your search or filters.</p></div>`;
@@ -157,12 +213,13 @@
 
       grid.innerHTML = items.map((item, i) => {
         const emoji = EMOJI[item.category] || '🪑';
+        const selection = itemSelections[String(item.id)] || defaultSelection();
         const imgEl = item.image
           ? `<img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.parentElement.innerHTML='<span class=\\'placeholder\\'>${emoji}</span>'">`
           : `<span class="placeholder">${emoji}</span>`;
 
         return `
-          <article class="card" role="listitem" tabindex="0"
+          <article class="card" role="listitem"
             data-id="${item.id}"
             aria-label="${item.name}, ${item.category}">
             <div class="card-img">
@@ -171,58 +228,43 @@
             <div class="card-body">
               <div class="card-category">${item.category}</div>
               <h3 class="card-name">${item.name}</h3>
+              <p class="card-desc">${item.description}</p>
+              <div class="decision-group" data-id="${item.id}" role="group" aria-label="Choose leave or remove for ${item.name}">
+                <button type="button" class="decision-btn ${selection.decision === 'leave' ? 'active' : ''}" data-id="${item.id}" data-decision="leave" aria-pressed="${selection.decision === 'leave'}">Leave</button>
+                <button type="button" class="decision-btn ${selection.decision === 'remove' ? 'active' : ''}" data-id="${item.id}" data-decision="remove" aria-pressed="${selection.decision === 'remove'}">Remove</button>
+              </div>
+              <label class="comment-label" for="comment-${item.id}">Buyer comment</label>
+              <textarea class="comment-input" id="comment-${item.id}" data-id="${item.id}" rows="3" maxlength="400" placeholder="Optional note, e.g. condition, preferred removal date, or question"></textarea>
             </div>
           </article>`;
       }).join('');
 
-      // Open modal on click or Enter key
-      grid.querySelectorAll('.card').forEach(card => {
-        const open = () => openModal(parseInt(card.dataset.id));
-        card.addEventListener('click', open);
-        card.addEventListener('keydown', e => { if (e.key === 'Enter') open(); });
+      grid.querySelectorAll('.comment-input').forEach(input => {
+        const itemId = input.dataset.id;
+        input.value = itemSelections[itemId]?.buyerComment || '';
+
+        input.addEventListener('input', e => {
+          setBuyerComment(itemId, e.target.value);
+        });
+      });
+
+      grid.querySelectorAll('.decision-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const itemId = btn.dataset.id;
+          const decision = btn.dataset.decision;
+
+          setDecision(itemId, decision);
+
+          const group = btn.closest('.decision-group');
+          if (!group) return;
+
+          group.querySelectorAll('.decision-btn').forEach(groupBtn => {
+            groupBtn.classList.toggle('active', groupBtn.dataset.decision === decision);
+            groupBtn.setAttribute('aria-pressed', String(groupBtn.dataset.decision === decision));
+          });
+        });
       });
     }
-
-    // ─────────────────────────────────────────
-    // MODAL
-    // ─────────────────────────────────────────
-    function openModal(id) {
-      const item = allItems.find(i => i.id === id);
-      if (!item) return;
-
-      const emoji = EMOJI[item.category] || '🪑';
-      const imgHtml = item.image
-        ? `<img src="${item.image}" alt="${item.name}" onerror="this.parentElement.innerHTML='<span class=\\'placeholder\\'>${emoji}</span>'">`
-        : `<span class="placeholder">${emoji}</span>`;
-
-      document.getElementById('modal-img').innerHTML = imgHtml;
-      document.getElementById('modal-category').textContent = item.category;
-      document.getElementById('modal-name').textContent = item.name;
-      document.getElementById('modal-desc').textContent = item.description;
-
-      document.getElementById('btn-enquire').onclick = () => {
-        // ── CUSTOMISE: link to a contact form, email, or WhatsApp ──
-        const subject = encodeURIComponent(`Enquiry: ${item.name}`);
-        const body    = encodeURIComponent(`Hi,\n\nI am interested in the ${item.name}.\n\nPlease get in touch with more details.\n\nThanks`);
-        window.location.href = `mailto:torbjorn.sitre@gmail.com?subject=${subject}&body=${body}`;
-      };
-
-      const backdrop = document.getElementById('modal-backdrop');
-      backdrop.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      document.getElementById('btn-close').focus();
-    }
-
-    function closeModal() {
-      document.getElementById('modal-backdrop').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    document.getElementById('btn-close').addEventListener('click', closeModal);
-    document.getElementById('modal-backdrop').addEventListener('click', e => {
-      if (e.target === e.currentTarget) closeModal();
-    });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
     // ─────────────────────────────────────────
     // SEARCH + SORT EVENTS
