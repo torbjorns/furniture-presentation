@@ -270,6 +270,40 @@ header {
   user-select: none;
 }
 
+.card-thumbs {
+  display: flex;
+  gap: 0.45rem;
+  padding: 0.55rem 0.75rem 0.2rem;
+}
+
+.thumb-btn {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--stone);
+  border-radius: 5px;
+  padding: 0;
+  overflow: hidden;
+  background: var(--white);
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.thumb-btn:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.thumb-btn.active {
+  border-color: var(--timber);
+}
+
+.thumb-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .card-body { padding: 14px 16px 16px; }
 
 .card-category {

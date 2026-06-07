@@ -346,12 +346,27 @@
         return;
       }
 
-      grid.innerHTML = items.map((item, i) => {
+      grid.innerHTML = items.map(item => {
         const emoji = EMOJI[item.category] || '🪑';
         const selection = itemSelections[String(item.id)] || defaultSelection();
-        const imgEl = item.image
-          ? `<img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.parentElement.innerHTML='<span class=\\'placeholder\\'>${emoji}</span>'">`
+        const imageList = Array.isArray(item.images)
+          ? item.images.filter(src => typeof src === 'string' && src.trim() !== '')
+          : [];
+        const primaryImage = imageList[0] || '';
+
+        const imgEl = primaryImage
+          ? `<img class="card-main-image" src="${primaryImage}" alt="${item.name}" loading="lazy">`
           : `<span class="placeholder">${emoji}</span>`;
+
+        const thumbnailsEl = imageList.length > 1
+          ? `<div class="card-thumbs" role="group" aria-label="Flere bilder for ${item.name}">
+              ${imageList.map((src, index) => `
+                <button type="button" class="thumb-btn ${index === 0 ? 'active' : ''}" data-image-src="${src}" aria-label="Vis bilde ${index + 1}">
+                  <img src="${src}" alt="Miniatyr ${index + 1} for ${item.name}" loading="lazy">
+                </button>
+              `).join('')}
+            </div>`
+          : '';
 
         return `
           <article class="card" role="listitem"
@@ -360,6 +375,7 @@
             <div class="card-img">
               ${imgEl}
             </div>
+            ${thumbnailsEl}
             <div class="card-body">
               <div class="card-category">${displayCategory(item.category)}</div>
               <h3 class="card-name">${item.name}</h3>
@@ -380,6 +396,38 @@
 
         input.addEventListener('input', e => {
           setBuyerComment(itemId, e.target.value);
+        });
+      });
+
+      grid.querySelectorAll('.thumb-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const card = btn.closest('.card');
+          const mainImage = card?.querySelector('.card-main-image');
+          const imageSrc = btn.dataset.imageSrc;
+          if (!mainImage || !imageSrc) return;
+
+          mainImage.src = imageSrc;
+
+          const thumbRow = btn.closest('.card-thumbs');
+          if (!thumbRow) return;
+
+          thumbRow.querySelectorAll('.thumb-btn').forEach(thumb => {
+            thumb.classList.toggle('active', thumb === btn);
+          });
+        });
+      });
+
+      grid.querySelectorAll('.card-main-image').forEach(img => {
+        img.addEventListener('error', () => {
+          const parent = img.parentElement;
+          if (!parent) return;
+          img.remove();
+          if (!parent.querySelector('.placeholder')) {
+            const placeholder = document.createElement('span');
+            placeholder.className = 'placeholder';
+            placeholder.textContent = '🪑';
+            parent.appendChild(placeholder);
+          }
         });
       });
 
