@@ -34,7 +34,7 @@
   {
     "id": 7,
     "name": "Garderobeskap med innmat",
-    "category": "M\u00f8bler",
+    "category": "Lagring",
     "description": "Brukt til lagring p\u00e5 kontoret.",
     "images": [
       "images/skap_kontor.jpeg",
@@ -75,7 +75,7 @@
     "id": 15,
     "name": "St\u00e5lskap i garasjen",
     "category": "Lagring",
-    "description": "Brukt til lagring i garasje. Inneholder rester av maling som nettopp er brukt.",
+    "description": "Brukt til lagring i garasje. Inneholder rester av malingen huset er malt med.",
     "images": [
       "images/img_3155.jpeg",
       "images/img_3154.jpeg"
@@ -83,9 +83,9 @@
   },
   {
     "id": 17,
-    "name": "St\u00e5lpult med treplate",
+    "name": "Solid pult med skuffer",
     "category": "Lagring",
-    "description": "Brukt som arbeidsbord i garasje. Solid st\u00e5lramme med treplate.",
+    "description": "Brukt som arbeidsbord i garasje.",
     "images": [
       "images/img_3157.jpeg"
     ]
@@ -221,7 +221,7 @@
   },
   {
     "id": 40,
-    "name": "St\u00e5lhyller i boden",
+    "name": "Solide hyller i boden",
     "category": "Lagring",
     "description": "",
     "images": [
@@ -292,6 +292,33 @@
     "description": "",
     "images": [
       "images/vask.jpeg"
+    ]
+  },
+  {
+    "id": 47,
+    "name": "Kj\u00f8leskap i hybel",
+    "category": "Hvitevarer",
+    "description": "",
+    "images": [
+      "images/kjoleskap_i_hybel.jpeg"
+    ]
+  },
+  {
+    "id": 50,
+    "name": "Komfyr i hybel",
+    "category": "Hvitevarer",
+    "description": "",
+    "images": [
+      "images/komfyr_i_hybel.jpeg"
+    ]
+  },
+  {
+    "id": 51,
+    "name": "Oppvaskmaskin i hybel",
+    "category": "Hvitevarer",
+    "description": "",
+    "images": [
+      "images/oppvaskmaskin_i_hybel.jpeg"
     ]
   },
   {
