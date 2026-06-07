@@ -15,7 +15,7 @@
 
   <header>
     <div class="header-inner">
-      <a href="#" class="logo">Overlevering<span>.</span></a>
+      <a href="#" class="logo">Innbo TV43<span>.</span></a>
       <div class="search-wrap">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <input type="search" id="search" placeholder="Søk i innbo…" aria-label="Søk i innbo" />
@@ -41,7 +41,7 @@
     <main>
       <section class="intro" aria-label="Slik bruker du siden">
         <h1 class="intro-title">Valgliste for innbo</h1>
-        <p class="intro-text">For hvert element velger du <strong>Behold</strong> eller <strong>Fjern</strong>, og kan legge inn en kommentar. Endringer lagres automatisk.</p>
+        <p class="intro-text">Her kan du som kjøper velge hva som skal beholdes eller fjernes, og kan legge inn en kommentar.</p>
         <p class="sync-status" id="sync-status" aria-live="polite"></p>
       </section>
       <div class="grid" id="grid" role="list" aria-label="Innboelementer"></div>
@@ -126,7 +126,7 @@
       });
 
       remoteEnabled = true;
-      setSyncStatus('Lagring: Koblet til skyen. Endringer synkroniseres automatisk.', 'ok');
+      setSyncStatus('Lagring i skyen. Endringer synkroniseres automatisk.', 'ok');
     }
 
     async function loadRemoteSelections() {
