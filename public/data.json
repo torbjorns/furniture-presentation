@@ -33,12 +33,30 @@
   },
   {
     "id": 7,
-    "name": "Garderobeskap med innmat",
+    "name": "Garderobeskap på kontoret",
     "category": "Lagring",
     "description": "Brukt til lagring p\u00e5 kontoret.",
     "images": [
       "images/skap_kontor.jpeg",
       "images/skap_kontor2.jpeg"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Garderobeskap i gangen nede",
+    "category": "Lagring",
+    "description": "",
+    "images": [
+      "images/garderobeskap_i_gangen.jpeg"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Garderobeskap p\u00e5 soverom nede",
+    "category": "Lagring",
+    "description": "",
+    "images": [
+      "images/garderobeskap_soverom.jpeg"
     ]
   },
   {
@@ -115,7 +133,8 @@
     "category": "M\u00f8bler",
     "description": "",
     "images": [
-      "images/frokostbord.jpg"
+      "images/frokostbord.jpg",
+      "images/frokostbord.jpeg"
     ]
   },
   {
@@ -124,7 +143,8 @@
     "category": "M\u00f8bler",
     "description": "",
     "images": [
-      "images/bbb-reol.jpg"
+      "images/bbb-reol.jpg",
+      "images/bbb-reol2.jpg"
     ]
   },
   {
@@ -133,7 +153,9 @@
     "category": "M\u00f8bler",
     "description": "I tillegg et lite b\u00e5ltt nattbord, en bl\u00e5 lenestol og en bl\u00e5 kommode.",
     "images": [
-      "images/blaasov.jpg"
+      "images/blaasov.jpg",
+      "images/blaa_seng.jpg",
+      "images/blaa_stol.jpg"
     ]
   },
   {
@@ -152,6 +174,7 @@
     "description": "",
     "images": [
       "images/toppasveien-43-prospekt-140.jpg",
+      "images/dobbeltseng.jpeg",
       "images/toppasveien-43-prospekt-142.jpg"
     ]
   },

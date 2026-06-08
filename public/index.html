@@ -16,6 +16,7 @@
   <header>
     <div class="header-inner">
       <a href="#" class="logo">Innbo TV43<span>.</span></a>
+      <a href="summary.html" id="summary-link" class="nav-link">Oppsummering</a>
       <div class="search-wrap">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <input type="search" id="search" placeholder="Søk i innbo…" aria-label="Søk i innbo" />
@@ -95,6 +96,11 @@
     const SUPABASE_URL = window.SUPABASE_URL || '';
     const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || '';
     const handoverCode = (new URLSearchParams(window.location.search).get('kode') || '').trim().toLowerCase();
+
+    const summaryLink = document.getElementById('summary-link');
+    if (summaryLink && handoverCode) {
+      summaryLink.href = `summary.html?kode=${encodeURIComponent(handoverCode)}`;
+    }
 
     let supabaseClient = null;
     let remoteEnabled = false;
