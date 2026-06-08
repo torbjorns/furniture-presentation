@@ -6,4 +6,5 @@ public/config.js
 firebase-debug.log
 
 # macOS
+./.DS_Store
 .DS_Store
