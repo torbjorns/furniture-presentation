@@ -234,6 +234,8 @@ header {
   cursor: default;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   animation: fadeUp 0.35s ease both;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
@@ -304,7 +306,12 @@ header {
   display: block;
 }
 
-.card-body { padding: 14px 16px 16px; }
+.card-body {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 
 .card-category {
   font-size: 0.6875rem;
@@ -336,6 +343,7 @@ header {
   grid-template-columns: 1fr 1fr;
   gap: 0.45rem;
   margin-bottom: 0.75rem;
+  margin-top: auto;
 }
 
 .decision-btn {

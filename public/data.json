@@ -61,7 +61,7 @@
   },
   {
     "id": 8,
-    "name": "Sjalusiskap og veggmonterte hyller",
+    "name": "Sjalusiskap og veggmonterte hyller på kontoret",
     "category": "M\u00f8bler",
     "description": "",
     "images": [
@@ -141,10 +141,9 @@
     "id": 26,
     "name": "BBB-reol med hj\u00f8rne",
     "category": "M\u00f8bler",
-    "description": "",
+    "description": "Det står også to bredder med hyller uten hjørne og uten skap i garasjen. Det er samme stil, men jeg har ikke bilde.",
     "images": [
-      "images/bbb-reol.jpg",
-      "images/bbb-reol2.jpg"
+      "images/bbb-reol2.jpeg"
     ]
   },
   {
@@ -154,18 +153,9 @@
     "description": "I tillegg et lite b\u00e5ltt nattbord, en bl\u00e5 lenestol og en bl\u00e5 kommode.",
     "images": [
       "images/blaasov.jpg",
-      "images/blaa_seng.jpg",
-      "images/blaa_stol.jpg",
-      "images/blaa_kommode.jpg"
-    ]
-  },
-  {
-    "id": 28,
-    "name": "Enkel furuseng p\u00e5 soverom nede",
-    "category": "M\u00f8bler",
-    "description": "I tillegg et lite nattbord i samme stil, og et litt st\u00f8rre.",
-    "images": [
-      "images/gulsov.jpg"
+      "images/blaa_seng.jpeg",
+      "images/blaa_stol.jpeg",
+      "images/blaa_kommode.jpeg"
     ]
   },
   {
@@ -256,7 +246,7 @@
     "id": 38,
     "name": "Heller i sykkelboden",
     "category": "Materialer",
-    "description": "Slike som er brukt foran inngangspartiet og foran leiligheten.",
+    "description": "Slike som er brukt på inngangstrinnet og foran leiligheten.",
     "images": [
       "images/heller.jpeg"
     ]
@@ -304,7 +294,7 @@
     "id": 43,
     "name": "Leca-blokker",
     "category": "Materialer",
-    "description": "Brukt til gulv i garasje, for sm\u00f8regrav.",
+    "description": "Brukt til sm\u00f8regrav. Kan brukes til å styrke smøregraven, til å redusere behovet for fyllmasse hvis dere ønsker å fylle igjen, eller til andre form\u00e5l.",
     "images": [
       "images/leca_garasje.jpeg"
     ]
