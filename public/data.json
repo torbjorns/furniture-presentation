@@ -101,7 +101,7 @@
   },
   {
     "id": 17,
-    "name": "Solid pult med skuffer",
+    "name": "Stålpult med skuffer",
     "category": "Lagring",
     "description": "Brukt som arbeidsbord i garasje.",
     "images": [
@@ -120,9 +120,9 @@
   },
   {
     "id": 20,
-    "name": "Trehylle i boden",
+    "name": "Trehylle i garasjen",
     "category": "Lagring",
-    "description": "Brukt til lagring i boden.",
+    "description": "Brukt til lagring i garasjen.",
     "images": [
       "images/img_3160.jpeg"
     ]
@@ -155,7 +155,8 @@
     "images": [
       "images/blaasov.jpg",
       "images/blaa_seng.jpg",
-      "images/blaa_stol.jpg"
+      "images/blaa_stol.jpg",
+      "images/blaa_kommode.jpg"
     ]
   },
   {
@@ -165,6 +166,15 @@
     "description": "I tillegg et lite nattbord i samme stil, og et litt st\u00f8rre.",
     "images": [
       "images/gulsov.jpg"
+    ]
+  },
+  {
+    "id": 29,
+    "name": "Hvit kommode",
+    "category": "M\u00f8bler",
+    "description": "",
+    "images": [
+      "images/hvit_kommode.jpeg"
     ]
   },
   {
@@ -199,7 +209,7 @@
   },
   {
     "id": 33,
-    "name": "Smal seng p\u00e5 gjesterommet",
+    "name": "Gjesteseng",
     "category": "M\u00f8bler",
     "description": "",
     "images": [
@@ -213,6 +223,15 @@
     "description": "",
     "images": [
       "images/fryser.jpeg"
+    ]
+  },
+  {
+    "id": 35,
+    "name": "Rosa skap og stol",
+    "category": "M\u00f8bler",
+    "description": "",
+    "images": [
+      "images/rosa_skap_og_stol.jpeg"
     ]
   },
   {
@@ -237,14 +256,24 @@
     "id": 38,
     "name": "Heller i sykkelboden",
     "category": "Materialer",
-    "description": "Slike som er brukt foran leiligheten.",
+    "description": "Slike som er brukt foran inngangspartiet og foran leiligheten.",
     "images": [
       "images/heller.jpeg"
     ]
   },
   {
+    "id": 39,
+    "name": "Skjenk på vaskerommet nede",
+    "category": "M\u00f8bler",
+    "description": "",
+    "images": [
+      "images/skjenk_vask.jpeg",
+      "images/skjenk_vask2.jpeg"
+    ]
+  },
+  {
     "id": 40,
-    "name": "Solide hyller i boden",
+    "name": "St\u00e5lhyller i boden",
     "category": "Lagring",
     "description": "",
     "images": [
@@ -342,6 +371,24 @@
     "description": "",
     "images": [
       "images/oppvaskmaskin_i_hybel.jpeg"
+    ]
+  },
+  {
+    "id": 52,
+    "name": "Speil med treramme",
+    "category": "M\u00f8bler",
+    "description": "",
+    "images": [
+      "images/speil.jpeg"
+    ]
+  },
+  {
+    "id": 53,
+    "name": "Stumtjener",
+    "category": "M\u00f8bler",
+    "description": "",
+    "images": [
+      "images/stumtjener.jpeg"
     ]
   },
   {
