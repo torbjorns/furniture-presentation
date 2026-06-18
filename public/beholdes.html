@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beholdes – Overlevering av innbo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo">Innbo TV43<span>.</span></a>
+      <a href="index.html" id="back-link" class="nav-link">← Tilbake til oversikt</a>
+      <span class="item-count" id="count" aria-live="polite"></span>
+    </div>
+  </header>
+
+  <div class="summary-page">
+    <main class="summary-main">
+      <section class="intro">
+        <h1 class="intro-title">Beholdes i boligen</h1>
+        <p class="intro-text">Her vises alle elementer som skal bli igjen i boligen. Elementer kjøper har kommentert er markert med kommentaren.</p>
+        <p class="sync-status" id="sync-status" aria-live="polite"></p>
+      </section>
+      <div id="summary-content"></div>
+    </main>
+  </div>
+
+  <script>
+    const EMOJI = {
+      'Living Room': '🛋️',
+      'Dining':      '🍽️',
+      'Bedroom':     '🛏️',
+      'Office':      '📚',
+      'Lighting':    '💡',
+    };
+
+    const CATEGORY_LABELS = {
+      'Living Room': 'Stue',
+      'Dining': 'Spisestue',
+      'Bedroom': 'Soverom',
+      'Office': 'Kontor',
+      'Lighting': 'Belysning',
+      'Hallway': 'Gang',
+      'Decor': 'Dekor',
+      'Textiles': 'Tekstiler',
+      'Outdoor': 'Ute',
+      'Kitchen': 'Kjøkken',
+      'Storage': 'Oppbevaring',
+      'Building': 'Bygg',
+      'Laundry': 'Vaskerom',
+      'Roofing': 'Tak'
+    };
+
+    function displayCategory(cat) {
+      return CATEGORY_LABELS[cat] || cat;
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    const STORAGE_KEY = 'house-item-decisions-v1';
+    let itemSelections = {};
+    let allItems = [];
+
+    const SUPABASE_URL = window.SUPABASE_URL || '';
+    const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || '';
+    const handoverCode = (new URLSearchParams(window.location.search).get('kode') || '').trim().toLowerCase();
+
+    const backLink = document.getElementById('back-link');
+    if (backLink && handoverCode) {
+      backLink.href = `index.html?kode=${encodeURIComponent(handoverCode)}`;
+    }
+
+    let supabaseClient = null;
+    let remoteEnabled = false;
+
+    function setSyncStatus(message, level = 'info') {
+      const el = document.getElementById('sync-status');
+      if (!el) return;
+      el.textContent = message;
+      el.className = `sync-status ${level}`;
+    }
+
+    function initRemoteSync() {
+      if (!SUPABASE_URL || !SUPABASE_ANON_KEY || !handoverCode) {
+        setSyncStatus('Viser lokalt lagrede valg. Legg til ?kode=... i lenken for sky-synkronisering.', 'warn');
+        return;
+      }
+      if (!window.supabase || typeof window.supabase.createClient !== 'function') {
+        setSyncStatus('Kun lokalt. Klarte ikke å laste Supabase-klient.', 'warn');
+        return;
+      }
+      supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+        global: { headers: { 'x-handover-code': handoverCode } }
+      });
+      remoteEnabled = true;
+    }
+
+    async function loadRemoteSelections() {
+      if (!remoteEnabled || !supabaseClient) return;
+
+      setSyncStatus('Henter data fra sky…', 'info');
+
+      const { data, error } = await supabaseClient
+        .from('handover_choices')
+        .select('item_id, decision, buyer_comment');
+
+      if (error) {
+        setSyncStatus(`Skyfeil ved lasting (${error.message}). Viser lokalt lagrede valg.`, 'error');
+        return;
+      }
+
+      for (const row of data || []) {
+        const key = String(row.item_id);
+        itemSelections[key] = {
+          decision: row.decision === 'remove' ? 'remove' : 'leave',
+          buyerComment: typeof row.buyer_comment === 'string' ? row.buyer_comment : ''
+        };
+      }
+
+      setSyncStatus('Synkronisert fra sky.', 'ok');
+    }
+
+    function loadSelections() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return {};
+        const parsed = JSON.parse(raw);
+        return parsed && typeof parsed === 'object' ? parsed : {};
+      } catch {
+        return {};
+      }
+    }
+
+    function renderItem(item) {
+      const sel = itemSelections[String(item.id)] || { decision: 'leave', buyerComment: '' };
+      const emoji = EMOJI[item.category] || '🪑';
+      const imageList = Array.isArray(item.images)
+        ? item.images.filter(s => typeof s === 'string' && s.trim() !== '')
+        : [];
+      const primaryImage = imageList[0] || '';
+
+      const imgEl = primaryImage
+        ? `<img src="${escapeHtml(primaryImage)}" alt="${escapeHtml(item.name)}" loading="lazy">`
+        : `<span>${emoji}</span>`;
+
+      const commentEl = sel.buyerComment && sel.buyerComment.trim()
+        ? `<p class="summary-item-comment">&ldquo;${escapeHtml(sel.buyerComment.trim())}&rdquo;</p>`
+        : '';
+
+      return `
+        <article class="summary-item">
+          <div class="summary-item-img">${imgEl}</div>
+          <div class="summary-item-body">
+            <div class="summary-item-header">
+              <span class="summary-item-name">${escapeHtml(item.name)}</span>
+            </div>
+            <div class="summary-item-category">${escapeHtml(displayCategory(item.category))}</div>
+            ${commentEl}
+          </div>
+        </article>`;
+    }
+
+    function render() {
+      const content = document.getElementById('summary-content');
+      const count = document.getElementById('count');
+
+      const toKeep = allItems.filter(item => {
+        const sel = itemSelections[String(item.id)];
+        return !sel || sel.decision !== 'remove';
+      });
+
+      toKeep.sort((a, b) => {
+        const byCat = displayCategory(a.category).localeCompare(displayCategory(b.category), 'no');
+        return byCat !== 0 ? byCat : a.name.localeCompare(b.name, 'no');
+      });
+
+      count.textContent = `${toKeep.length} av ${allItems.length} elementer`;
+
+      if (toKeep.length === 0) {
+        content.innerHTML = `
+          <div class="summary-empty">
+            <p>Ingen elementer beholdes</p>
+            <p>Alle elementer er merket som «Fjern» av kjøper.</p>
+          </div>`;
+        return;
+      }
+
+      const byCategory = {};
+      for (const item of toKeep) {
+        const label = displayCategory(item.category);
+        if (!byCategory[label]) byCategory[label] = [];
+        byCategory[label].push(item);
+      }
+
+      let html = '';
+      for (const [label, items] of Object.entries(byCategory)) {
+        html += `<h2 class="summary-section-title">${escapeHtml(label)} (${items.length})</h2>`;
+        html += `<div class="summary-list">${items.map(renderItem).join('')}</div>`;
+      }
+
+      content.innerHTML = html;
+    }
+
+    initRemoteSync();
+
+    fetch('data.json')
+      .then(r => r.json())
+      .then(async data => {
+        allItems = data;
+        itemSelections = loadSelections();
+        await loadRemoteSelections();
+        render();
+      })
+      .catch(() => {
+        document.getElementById('summary-content').innerHTML =
+          '<p class="error-message">Kunne ikke laste inn data. Kontroller at data.json ligger i samme mappe.</p>';
+      });
+  </script>
+</body>
+</html>
